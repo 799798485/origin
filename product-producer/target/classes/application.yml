@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring
+    username: root
+    password: ccat
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+#mybatis:
+#  type-aliases-package: com.hr.product.pojo
+  application:
+    name: product-producer
+eureka:
+  client:
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true # 当其它服务获取地址时提供ip而不是hostname
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
